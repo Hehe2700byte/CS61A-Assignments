@@ -8,8 +8,7 @@ def digit(n, k):
     >>> digit(3579, 10)
     0
     """
-    return ____
-
+    return n // pow(10, k) % 10
 
 def middle(a, b, c):
     """Return the number among a, b, and c that is not the smallest or largest.
@@ -26,7 +25,7 @@ def middle(a, b, c):
     >>> middle(30, 5, 40)
     30
     """
-    return ____
+    return a + b + c - max(a, b, c) - min(a, b, c)
 
 
 def falling(n, k):
@@ -42,6 +41,11 @@ def falling(n, k):
     1
     """
     "*** YOUR CODE HERE ***"
+    fac = [1]
+    for i in range(1, n + 1):
+        fac.append(fac[i - 1] * i)
+    return fac[n] // fac[n - k]
+
 
 
 def divisible_by_k(n, k):
@@ -65,6 +69,12 @@ def divisible_by_k(n, k):
     0
     """
     "*** YOUR CODE HERE ***"
+    times = 0
+    for i in range(1, n + 1):
+        if i % k == 0:
+            times += 1
+            print(str(i))
+    return times
 
 
 def sum_digits(y):
@@ -81,6 +91,11 @@ def sum_digits(y):
     6
     """
     "*** YOUR CODE HERE ***"
+    sum = 0
+    while y != 0:
+        sum += (y % 10)
+        y //= 10
+    return sum
 
 
 def double_eights(n):
@@ -99,4 +114,15 @@ def double_eights(n):
     False
     """
     "*** YOUR CODE HERE ***"
+    temp1 = 0
+    temp2 =0
+    while n != 0:
+        temp1 = n % 10
+        n //= 10
+        temp2 = n % 10
+        if temp1 == temp2 == 8:
+            return True
+    return False
+
+
 
